@@ -8,18 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('bukus', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_buku')->unique();
             $table->string('judul');
+            $table->string('kategori');
             $table->string('penulis');
-            $table->string('penerbit');
-            $table->integer('stok');
+            $table->integer('tahun_terbit');
+            $table->integer('jumlah');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('bukus');
     }
 };
