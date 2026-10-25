@@ -6,21 +6,17 @@ use Illuminate\Http\Request;
 
 class BukuController extends Controller
 {
-    // Tahap 5: Read (Menampilkan data)
     public function index()
     {
         $bukus = Buku::latest()->paginate(10);
-
         return view('index', compact('bukus'));
     }
 
-    // Tahap 6: Create (Form tambah data)
     public function create()
     {
         return view('create');
     }
 
-    // Menyimpan data baru
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -34,24 +30,20 @@ class BukuController extends Controller
         ]);
 
         Buku::create($data);
-
         return redirect()->route('buku.index')
             ->with('success', 'Data berhasil ditambahkan.');
     }
 
-    // Tahap 9: Show (Detail data)
     public function show(Buku $buku)
     {
         return view('show', compact('buku'));
     }
 
-    // Tahap 7: Update (Form edit data)
     public function edit(Buku $buku)
     {
         return view('edit', compact('buku'));
     }
 
-    // Menyimpan perubahan data
     public function update(Request $request, Buku $buku)
     {
         $data = $request->validate([
@@ -70,7 +62,6 @@ class BukuController extends Controller
             ->with('success', 'Data berhasil diperbarui.');
     }
 
-    // Tahap 8: Delete (Menghapus data)
     public function destroy(Buku $buku)
     {
         $buku->delete();
