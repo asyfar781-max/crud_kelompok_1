@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use App\Models\Buku;
@@ -9,6 +8,6 @@ class BukuSeeder extends Seeder
 {
     public function run(): void
     {
-        Buku::factory()->count(10)->create();
+        Buku::factory()->count(20)->create();
     }
 }
